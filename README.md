@@ -54,15 +54,17 @@ An AI-powered **Multi-Agent Event Planner** built with [CrewAI](https://github.c
 ## 📁 Project Structure
 
 multi-agent-event-planner/  
+├── .github/                    # 🔄 GitHub Actions workflows  
+│   └── workflows/  
+│       └── push_to_hf.yml      # 🚀 Auto-deploy to Hugging Face Spaces  
 ├── app.py                      # 🚀 Streamlit app interface (main)  
 ├── agents.py                   # 🤖 Agent definitions (Venue, Logistics, Marketing)  
 ├── tasks.py                    # 📋 Task definitions (venue_task, logistic_task, marketing_task)  
 ├── tools.py                    # 🛠️ Tool configuration & fallbacks for scraping/search  
 ├── app_utils.py                # 🔑 Helpers: API setup, printing utilities, etc.  
 ├── requirements.txt            # 📦 Python dependencies  
-├── README.md                   # 📖 This documentation  
-└── images/  
-    └── demo_screenshot.png     # 🖼️ Optional UI screenshot
+├── LICENSE                     # � Project license (MIT)  
+└── README.md                   # � This documentation
 
 ---
 
