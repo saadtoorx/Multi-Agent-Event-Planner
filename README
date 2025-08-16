@@ -1,82 +1,81 @@
 ---
-title: "Multi-Agent Event Planner"
-emoji: "🗓️"
-colorFrom: "purple"
-colorTo: "red"
-sdk: "streamlit"
-sdk_version: "1.48.1"
-app_file: "app.py"
+title: Multi-Agent Customer Support Automation
+emoji: 📞
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.48.1
+app_file: app.py
 pinned: true
 ---
 
-# 🗓️ Multi-Agent Event Planner
+# 📞 Multi-Agent Customer Support Automation
 
-An AI-powered **Multi-Agent Event Planner** built with [CrewAI](https://github.com/joaomdmoura/crewai) and [Streamlit](https://streamlit.io/). This app demonstrates how multiple AI agents can collaborate to plan, organize, and review events efficiently.
+An intelligent multi-agent customer support system powered by [CrewAI](https://github.com/joaomdmoura/crewai) and [Streamlit](https://streamlit.io/). This application simulates how AI agents can collaboratively handle customer inquiries with high quality, empathy, and accuracy.
 
 <div align="center">
-  <img src="images/demo_screenshot.png" width="80%" alt="Event Planner Demo Screenshot">
+  <img src="images/demo_screenshot.png" width="80%" alt="App Demo Screenshot">
 </div>
 
 ---
 
 ## 🚀 Features
 
-- 🤖 **Multi-Agent Collaboration**: Specialized AI agents for venue, logistics, and marketing tasks.  
-- 📅 **Event Workflow Automation**: End-to-end task execution, from venue selection to final promotion.  
-- 🔍 **Web Integration**: Scrapes trusted sources for venues, logistics partners, and marketing strategies.  
-- 🧠 **Memory-Enabled CrewAI**: Agents share knowledge to enhance decision-making.  
-- 🧩 **Modular Design**: Easily extend with more agents or tools.  
+- 🤖 **Multi-Agent Collaboration**: AI agents perform specialized tasks such as resolving support inquiries and reviewing responses.
+- 🔍 **Web Scraping Integration**: Automatically pulls info from trusted sources like [CrewAI Docs](https://crewai.com/docs/introduction).
+- 💬 **Natural, Friendly Tone**: Outputs are helpful, casual yet professional — ideal for real-world support environments.
+- 🧠 **Memory-Enabled CrewAI**: Agents can retain shared memory to improve task performance.
+- 🧩 **Modular Architecture**: Easily extend or modify the system to include more agents or tools.
 
 ---
 
 ## 🏗️ Architecture Overview
 
 ### 🧠 Agents
-- **Venue Coordinator**: Handles venue selection, booking, and requirements.  
-- **Logistic Manager**: Manages transportation, catering, equipment, and on-site logistics.  
-- **Marketing & Communications Agent**: Designs promotion strategy, communications, and outreach.  
+- **Support Agent**: Responds directly to customer queries with researched answers.
+- **QA Agent**: Reviews the support agent’s reply to ensure tone, accuracy, and completeness.
 
 ### 📋 Tasks
-1. **Venue Task** – Research and finalize event venues.  
-2. **Logistic Task** – Plan transport, catering, and equipment logistics.  
-3. **Marketing Task** – Develop marketing campaigns and communication plans.  
+1. **Inquiry Resolution**: Resolves user inquiry with research and clarity.
+2. **QA Review**: Reviews and polishes the initial response for final output.
 
-### 🛠️ Tools
-- WebsiteSearchTool – for general event research  
-- ScrapeWebsiteTool – scrape details from vendor/venue websites  
-- CrewAI Doc Scraper – integrated for framework reference  
+### 🛠️ Tools Used
+- `WebsiteSearchTool` – for general web searches  
+- `ScrapeWebsiteTool` – scrapes content from specific URLs  
+- Preconfigured doc scraper for CrewAI docs
 
 ---
 
 ## 📁 Project Structure
 
-multi-agent-event-planner/  
-├── app.py                 # 🚀 Streamlit app interface  
-├── agents.py              # 🤖 Agent definitions (Venue, Logistics, Marketing)  
-├── tasks.py               # 📋 Task definitions (Venue, Logistic, Marketing)  
-├── tools.py               # 🛠️ Tool configurations  
-├── utils.py               # 🔑 API key handling  
-├── requirements.txt       # 📦 Dependencies  
-├── README.md              # 📖 Documentation  
-└── images/  
-    └── demo_screenshot.png  # 🖼️ App UI screenshot  
+    multi-agent-customer-support/
+    ├── app.py                 # 🚀 Streamlit app interface
+    ├── agents.py              # 🤖 Agent definitions (not shared yet)
+    ├── tasks.py               # 📋 Task definitions
+    ├── tools.py               # 🛠️ Tool configurations
+    ├── utils.py               # 🔑 API key handling
+    ├── requirements.txt       # 📦 Dependencies
+    ├── README.md              # 📖 Documentation
+    └── images/
+        └── demo_screenshot.png  # 🖼️ App UI screenshot (optional)
 
 ---
 
 ## 🛠️ Installation & Setup
 
-1. Clone the repository  
+1. **Clone the repository**
 
-    git clone https://github.com/saadtoorx/multi-agent-event-planner.git  
-    cd multi-agent-event-planner  
+    git clone https://github.com/saadtoorx/multi-agent-customer-support.git  
+    cd multi-agent-customer-support
 
-2. Install dependencies  
+2. **Install dependencies**
 
-    pip install -r requirements.txt  
+    pip install -r requirements.txt
 
-3. Configure environment variables by creating a `.env` file:  
+3. **Add your OpenAI API key**
+- Create a `.env` file:
 
-    OPENAI_API_KEY=your-api-key-here  
+    OPENAI_API_KEY=your-api-key-here
 
 ---
 
@@ -84,49 +83,48 @@ multi-agent-event-planner/
 
     streamlit run app.py
 
-- 📝 Input your event details (e.g., "Corporate Tech Conference 2025").  
-- 🧠 Agents collaborate on venue, logistics, and marketing tasks.  
-- 📋 Final, polished event plan is displayed in the UI.  
+- 📝 App simulates a support inquiry from a fictional customer.
+- 🧠 CrewAI kicks off task execution between agents.
+- 📋 Final, polished response is displayed in Streamlit UI.
 
 ---
 
 ## 📦 Tech Stack
 
-- **Python 3.8+**  
-- Streamlit  
-- CrewAI  
-- crewAI-tools  
-- OpenAI API  
-- python-dotenv  
+- **Python 3.8+**
+- [Streamlit](https://streamlit.io/)
+- [CrewAI](https://github.com/joaomdmoura/crewai)
+- [crewAI-tools](https://github.com/joaomdmoura/crewai-tools)
+- [OpenAI API](https://platform.openai.com/)
+- `python-dotenv`
 
 ---
 
 ## 🤖 Agent Summary
 
-| Agent                           | Responsibility                                              |
-|--------------------------------|--------------------------------------------------------------|
-| **Venue Coordinator**           | Researches and finalizes venues.                           |
-| **Logistic Manager**            | Manages transport, catering, and on-site logistics.         |
-| **Marketing & Communications**  | Designs campaigns and communication strategies.             |
+| Agent              | Responsibility                                              |
+|--------------------|-------------------------------------------------------------|
+| **Support Agent**  | Researches and writes a helpful reply to customer inquiry.  |
+| **QA Agent**       | Reviews the reply, improves tone, and ensures completeness. |
 
 ---
 
 ## 🔮 Future Improvements
 
-- 🌐 Add real-time vendor/venue APIs  
-- 🧠 Include a Budget Optimization Agent  
-- 🗂️ Export event plans to PDF or calendar apps  
-- 📊 Visualization of event workflows in the UI  
+- 🧠 Add more agents (e.g., Sentiment Analyst, Follow-up Manager)
+- 🌐 Use live customer chat input instead of static prompt
+- 🧾 Export final replies to email or ticketing system
+- 🧩 Add memory visualization or trace logs
 
 ---
 
 ## 📄 License
 
-Licensed under the MIT License. See `LICENSE` for full terms.  
+Licensed under the MIT License. See [`LICENSE`](LICENSE) for full terms.
 
 ---
 
 ## ✨ Built By
 
-Created with ❤️ by [Saad Toor](https://www.linkedin.com/in/saadtoorx/) (@saadtoorx)  
-Powered by CrewAI, Streamlit, and OpenAI
+> Created with ❤️ by [Saad Toor](https://www.linkedin.com/in/saadtoorx/) (`@saadtoorx`)  
+> Powered by CrewAI, Streamlit, and OpenAI
