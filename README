@@ -1,6 +1,17 @@
-# 🗓️ Multi-Agent Event Planner
+---
+title: "Multi-Agent Customer Support Automation"
+emoji: "📞"
+colorFrom: "blue"
+colorTo: "green"
+sdk: "streamlit"
+sdk_version: "1.48.1"
+app_file: "app.py"
+pinned: true
+---
 
-An AI-powered **multi-agent event planning system** built with [CrewAI](https://github.com/joaomdmoura/crewai) and [Streamlit](https://streamlit.io/). This application demonstrates how specialized AI agents can collaborate to plan, manage, and review events with structured workflows and user feedback.
+# 📞 Multi-Agent Customer Support Automation
+
+An intelligent multi-agent customer support system powered by [CrewAI](https://github.com/joaomdmoura/crewai) and [Streamlit](https://streamlit.io/). This application simulates how AI agents can collaboratively handle customer inquiries with high quality, empathy, and accuracy.
 
 <div align="center">
   <img src="images/demo_screenshot.png" width="80%" alt="App Demo Screenshot">
@@ -10,121 +21,109 @@ An AI-powered **multi-agent event planning system** built with [CrewAI](https://
 
 ## 🚀 Features
 
-- 🤖 **Multi-Agent Workflow**: Agents work together to plan, review, and refine event details.  
-- ✨ **Feedback Loop**: Users can provide feedback during execution, integrated into CrewAI’s flow.  
-- 🧠 **Memory-Enabled Agents**: Agents share context for consistency across tasks.  
-- 🧩 **Modular System**: Easily extend with new agents, tasks, or tools.  
-- 🎯 **Practical Use-Case**: From conferences to parties, the planner provides structured recommendations.  
+- 🤖 **Multi-Agent Collaboration**: AI agents perform specialized tasks such as resolving support inquiries and reviewing responses.
+- 🔍 **Web Scraping Integration**: Automatically pulls info from trusted sources like [CrewAI Docs](https://crewai.com/docs/introduction).
+- 💬 **Natural, Friendly Tone**: Outputs are helpful, casual yet professional — ideal for real-world support environments.
+- 🧠 **Memory-Enabled CrewAI**: Agents can retain shared memory to improve task performance.
+- 🧩 **Modular Architecture**: Easily extend or modify the system to include more agents or tools.
 
 ---
 
 ## 🏗️ Architecture Overview
 
 ### 🧠 Agents
-- **Event Planner Agent** – Creates a detailed event plan based on user input.  
-- **Event Reviewer Agent** – Reviews, improves, and finalizes the event plan with refinements.  
+- **Support Agent**: Responds directly to customer queries with researched answers.
+- **QA Agent**: Reviews the support agent’s reply to ensure tone, accuracy, and completeness.
 
 ### 📋 Tasks
-1. **Plan Creation** – Generates an initial draft of the event plan.  
-2. **Plan Review** – Evaluates the draft for clarity, feasibility, and improvements.  
-3. **Feedback Incorporation** – Integrates user feedback into the final plan.  
+1. **Inquiry Resolution**: Resolves user inquiry with research and clarity.
+2. **QA Review**: Reviews and polishes the initial response for final output.
 
 ### 🛠️ Tools Used
-- **Streamlit UI** – Interactive frontend for inputs and feedback.  
-- **CrewAI Engine** – Multi-agent orchestration framework.  
-- **Custom Input Patching** – Ensures seamless user feedback handling inside Hugging Face Spaces and Streamlit.  
+- WebsiteSearchTool – for general web searches  
+- ScrapeWebsiteTool – scrapes content from specific URLs  
+- Preconfigured doc scraper for CrewAI docs
 
 ---
 
 ## 📁 Project Structure
 
-multi-agent-event-planner/
-├── app.py # 🚀 Streamlit app interface
-├── agents.py # 🤖 Agent definitions
-├── tasks.py # 📋 Task definitions
-├── tools.py # 🛠️ Tool configurations
-├── utils.py # 🔑 API key + input patching
-├── requirements.txt # 📦 Dependencies
-├── README.md # 📖 Documentation
-└── images/
-└── demo_screenshot.png # 🖼️ App UI screenshot
-
-yaml
-Copy
-Edit
+multi-agent-customer-support/  
+├── app.py                 # 🚀 Streamlit app interface  
+├── agents.py              # 🤖 Agent definitions (not shared yet)  
+├── tasks.py               # 📋 Task definitions  
+├── tools.py               # 🛠️ Tool configurations  
+├── utils.py               # 🔑 API key handling  
+├── requirements.txt       # 📦 Dependencies  
+├── README.md              # 📖 Documentation  
+└── images/  
+    └── demo_screenshot.png  # 🖼️ App UI screenshot (optional)  
 
 ---
 
 ## 🛠️ Installation & Setup
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/saadtoorx/multi-agent-event-planner.git
-cd multi-agent-event-planner
-Install dependencies
+1. Clone the repository  
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Add your OpenAI API key
-Create a .env file in the project root:
+    git clone https://github.com/saadtoorx/multi-agent-customer-support.git  
+    cd multi-agent-customer-support  
 
-env
-Copy
-Edit
-OPENAI_API_KEY=your-api-key-here
-▶️ Running the App
-bash
-Copy
-Edit
-streamlit run app.py
-📝 Enter your event details in the sidebar.
+2. Install dependencies  
 
-🧠 CrewAI agents collaborate to generate a plan.
+    pip install -r requirements.txt  
 
-💬 Provide feedback, which agents use to refine results.
+3. Add your OpenAI API key by creating a `.env` file:  
 
-📋 Final polished plan is displayed in the Streamlit interface.
+    OPENAI_API_KEY=your-api-key-here  
 
-📦 Tech Stack
-Python 3.8+
+---
 
-Streamlit
+## ▶️ Running the App
 
-CrewAI
+    streamlit run app.py
 
-OpenAI API
+- 📝 App simulates a support inquiry from a fictional customer.  
+- 🧠 CrewAI kicks off task execution between agents.  
+- 📋 Final, polished response is displayed in Streamlit UI.  
 
-python-dotenv
+---
 
-🤖 Agent Summary
-Agent	Responsibility
-Event Planner Agent	Creates a structured draft event plan.
-Event Reviewer Agent	Reviews, refines, and finalizes the event plan.
+## 📦 Tech Stack
 
-🔮 Future Improvements
-🧾 Export event plans as PDF/Word.
+- **Python 3.8+**
+- Streamlit
+- CrewAI
+- crewAI-tools
+- OpenAI API
+- python-dotenv
 
-📅 Add calendar integration (Google Calendar, Outlook).
+---
 
-🌐 Connect to live APIs for venues, catering, and services.
+## 🤖 Agent Summary
 
-🎙️ Enable real-time voice or chat-based planning.
+| Agent              | Responsibility                                              |
+|--------------------|-------------------------------------------------------------|
+| **Support Agent**  | Researches and writes a helpful reply to customer inquiry.  |
+| **QA Agent**       | Reviews the reply, improves tone, and ensures completeness. |
 
-📊 Add visualization of timelines, budgets, and schedules.
+---
 
-📄 License
-Licensed under the MIT License. See LICENSE for full terms.
+## 🔮 Future Improvements
 
-✨ Built By
-Created with ❤️ by Saad Toor (@saadtoorx)
+- 🧠 Add more agents (e.g., Sentiment Analyst, Follow-up Manager)  
+- 🌐 Use live customer chat input instead of static prompt  
+- 🧾 Export final replies to email or ticketing system  
+- 🧩 Add memory visualization or trace logs  
+
+---
+
+## 📄 License
+
+Licensed under the MIT License. See `LICENSE` for full terms.
+
+---
+
+## ✨ Built By
+
+Created with ❤️ by [Saad Toor](https://www.linkedin.com/in/saadtoorx/) (@saadtoorx)  
 Powered by CrewAI, Streamlit, and OpenAI
-
-pgsql
-Copy
-Edit
-
-Now you can **click copy once** and you’ll get the entire README file.  
-
-Do you also want me to pack the **`requirements.txt`** and **`LICENSE`** the same way (all-in-one box
