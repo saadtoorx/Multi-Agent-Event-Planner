@@ -17,7 +17,8 @@ def agent_tasks(venue_coordinator, logistic_manager, marketing_communications_ag
         
         expected_output= "All the details of the specifically chosen venue you found to accommodate the event",
         
-        human_input= True,
+        # Remove human_input to prevent hanging
+        # human_input= True,
 
         #Outputs the venue details in a JSON format which is utilized and formatted using Pydantic (VenueDetails)
         output_json= VenueDetails,
@@ -32,7 +33,8 @@ def agent_tasks(venue_coordinator, logistic_manager, marketing_communications_ag
         description= "Coordinate catering and equipment for an event with {expected_participants} participants on {tentative_date}.",
         
         expected_output= "Confirmations of all logistics arrangements including catering, equipment rental, and setup details.",
-        human_input= True,
+        # Remove human_input to prevent hanging
+        # human_input= True,
 
         # #Async Execution: This task will be executed along with the other tasks as parallel execution 
         # async_execution= True,
@@ -48,7 +50,8 @@ def agent_tasks(venue_coordinator, logistic_manager, marketing_communications_ag
 
         expected_output= "A comprehensive report on marketing activities and attendee engagement formatted as markdown.",
 
-        human_input= True,
+        # Remove human_input to prevent hanging
+        # human_input= True,
         # async_execution= True,
         context= [venue_task, logistics_task],
         output_file= "marketing_report.md",

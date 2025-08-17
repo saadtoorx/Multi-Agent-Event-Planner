@@ -4,6 +4,10 @@ import os
 import json
 from datetime import datetime
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Suppress warnings
 warnings.filterwarnings("ignore")
@@ -41,8 +45,12 @@ def configure_api_keys():
             st.markdown("🔑 API Configuration")
             st.markdown("Please enter your API keys to begin:")
         
-            openai_api_key = st.text_input("OpenAI API Key", type="password", key="openai_key")
-            serper_api_key = st.text_input("Serper API Key", type="password", key="serper_key")
+            # Try to load from environment first
+            default_openai = os.getenv("OPENAI_API_KEY", "")
+            default_serper = os.getenv("SERPER_API_KEY", "")
+            
+            openai_api_key = st.text_input("OpenAI API Key", type="password", key="openai_key", value=default_openai)
+            serper_api_key = st.text_input("Serper API Key", type="password", key="serper_key", value=default_serper)
         
             if st.button("Configure Keys", type="primary"):
                 if openai_api_key and serper_api_key:
@@ -56,6 +64,14 @@ def configure_api_keys():
                     st.rerun()
                 else:
                     st.error("❌ Please enter both API keys.")
+            
+            # Auto-configure if keys are already in environment
+            if default_openai and default_serper and not st.session_state.api_keys_configured:
+                os.environ["OPENAI_API_KEY"] = default_openai
+                os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini"
+                os.environ["SERPER_API_KEY"] = default_serper
+                st.session_state.api_keys_configured = True
+                st.success("✅ API Keys loaded from environment!")
     
     return openai_api_key and serper_api_key
 
@@ -286,15 +302,25 @@ def execute_with_crewai():
         event_management_crew = Crew(
             agents=[venue_coordinator, logistic_manager, marketing_communications_agent],
             tasks=[venue_task, logistics_task, marketing_task],
-            verbose=True
+            verbose=True,
+            max_execution_time=300,  # 5 minutes timeout
+            memory=False  # Disable memory to avoid issues
         )
         
-        # Execute crew
-        result = event_management_crew.kickoff(inputs=st.session_state.event_details)
-        return result
+        # Execute crew with timeout and error handling
+        try:
+            result = event_management_crew.kickoff(inputs=st.session_state.event_details)
+            return result
+        except Exception as exec_error:
+            st.error(f"⚠️ Crew execution error: {str(exec_error)}")
+            return None
         
+    except ImportError as imp_error:
+        st.error(f"❌ Import error: {str(imp_error)}. Please check if all dependencies are installed.")
+        return None
     except Exception as e:
-        raise Exception(f"CrewAI execution failed: {str(e)}")
+        st.error(f"❌ CrewAI execution failed: {str(e)}")
+        return None
 
 def display_results():
 
@@ -521,7 +547,16 @@ def main():
                 """)
             
             with col3:
-                st.image("images/png_start.png", width=400, )  # Set width in pixels (e.g., 300)
+                # st.image("images/png_start.png", width=400, )  # Set width in pixels (e.g., 300)
+                st.markdown("### 🎯 **Key Features:**")
+                st.markdown("""
+                - 🤖 **AI-Powered Agents** working collaboratively
+                - 🏢 **Smart Venue Selection** based on your criteria  
+                - 📦 **Automated Logistics** planning and coordination
+                - 📢 **Strategic Marketing** campaign development
+                - 📊 **Comprehensive Reports** for all aspects
+                - 💾 **Downloadable Results** in multiple formats
+                """)
                 st.markdown("""
                        ### 🚀 Getting Started
                     1. Enter your OpenAI and Serper API keys in the sidebar
