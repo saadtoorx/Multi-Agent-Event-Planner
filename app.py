@@ -49,9 +49,9 @@ def configure_api_keys():
             default_openai = os.getenv("OPENAI_API_KEY", "")
             default_serper = os.getenv("SERPER_API_KEY", "")
             
-            openai_api_key = st.text_input("OpenAI API Key", type="password", key="openai_key", value=default_openai)
-            serper_api_key = st.text_input("Serper API Key", type="password", key="serper_key", value=default_serper)
-        
+            openai_api_key = st.text_input("OpenAI API Key", type="password", key="openai_key")
+            serper_api_key = st.text_input("Serper API Key", type="password", key="serper_key")
+
             if st.button("Configure Keys", type="primary"):
                 if openai_api_key and serper_api_key:
                     # Set environment variables
